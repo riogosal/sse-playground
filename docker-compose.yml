@@ -1,0 +1,16 @@
+services:
+  api:
+    image: playground-sse:latest
+    build:
+      context: ./src
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "9090:8080"
+    volumes:
+      - ./src:/go/src/app
+    logging:
+        driver: "json-file"
+        options:
+          max-size: "200k"
+          max-file: "10"
